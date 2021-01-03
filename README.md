@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# 내보낸 카카오톡 재구현
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 준비 사항
 
-## Available Scripts
+### 백엔드 서버를 함께 구동시켜야 합니다
 
-In the project directory, you can run:
+[백엔드 서버 소스](https://github.com/bvv8808/dhw2020-back)
+서버 소스를 다운 받으신 후, `npm i`명령으로 필요한 라이브러리를 내려받아 주세요.
 
-### `npm start`
+백엔드 서버의 루트 디렉토리(package.json 파일과 동일한 경로)에 `.env`파일을 생성하여 `아이디=비밀번호`형식으로 사용자 정보를 추가해주세요. 아래는 예시입니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+user1=1234
+user2=0000
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 내보낸 카카오톡 데이터를 백엔드 서버에 옮겨야 합니다
 
-### `npm test`
+- 내려받은 카카오톡 데이터 중 txt파일만 빼두고 나머지 모든 데이터들(사진, 동영상, 오디오)을 `/public/assets/resource`폴더에 옮겨주세요.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- txt파일이 여러 개라면 하나로 합쳐주시고, 그 과정에서 각 txt파일의 맨 위에 삽입된 다음과 같은 형식의 텍스트는 지워주세요.
+  ```
+  Talk_2020.12.21 21:42-1.txt
+  저장한 날짜 : 2020. 12. 21. 오후 9:42
+  ```
+- 하나로 합친 txt파일을 `public/assets/talk`폴더에 옮겨주세요.
+- `/public/assts/talk/[텍스트 파일명].txt`경로를 `/src/routes.main.js`파일의 다음 부분에 넣어주세요.
 
-### `npm run build`
+```javascript
+// line 11
+const talkTextPath = `/public/assts/talk/[텍스트 파일명].txt`;
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> 이로써 백엔드 서버는 세팅이 끝났습니다. `node app`명령으로 서버를 실행해주세요. 아래부터는 본 저장소에서 내려받을 수 있는 프론트 서버 세팅에 대한 내용입니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 사용자가 로그인 후 이용할 수 있습니다
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`/src/dhw-config.json`파일을 생성하여 이용할 사용자의 *아이디*와 내보낸 *카톡에 지정된 이름*을 아래와 같이 작성해줍니다.
 
-### `npm run eject`
+```
+{
+    "아이디1": "카톡에 지정된 이름1",
+    "아이디2": "카톡에 지정된 이름2"
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 유의 사항
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 백엔드 서버를 먼저 구동시킨 후에 프론트 서버를 구동시켜 주세요.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 사진, 동영상, 음성메시지와 같은 미디어 데이터만 지원합니다. 또한 미디어는 카톡방에서 바로 확인하실 수는 없고, 해당 텍스트(사진, 동영상, 음성메시지) 클릭 시 별도의 컴포넌트에 렌더링됩니다.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- 이모티콘은 표시되지 않으며, `이모티콘`이라는 텍스트로 출력됩니다.
 
-## Learn More
+- 카톡 내용 중 `줄바꿈`버튼을 눌러 여러 줄의 톡을 한 번에 보낸 톡은 여러 개의 톡으로 출력됩니다. 훗날 하나의 톡으로 출력되도록 수정하겠습니다..
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 검색 기능 또한 훗날 도입 예정입니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 조잡하고 부족한 결과물이지만 관심 가져 주셔서 감사합니다

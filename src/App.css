@@ -1,5 +1,84 @@
+@font-face {
+  font-family: "sd_gothic_b";
+  src: url("./Assets/Fonts/AppleSDGothicNeoB.ttf");
+}
+@font-face {
+  font-family: "sd_gothic_m";
+  src: url("./Assets/Fonts/AppleSDGothicNeoM.ttf");
+}
+@font-face {
+  font-family: "sd_gothic_l";
+  src: url("./Assets/Fonts/AppleSDGothicNeoL.ttf");
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 500px;
+  height: 90%;
+  /* border: 2px solid red; */
+  background-color: #aabfd0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.talkContainer {
+  width: 300px;
+  position: relative;
+  /* border: 1px solid blue; */
+  margin: 10px 0;
+  /* display: flex; */
+}
+.box-left {
+  align-self: flex-start;
+  margin-left: 10px;
+}
+.box-right {
+  align-self: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+.talkBox {
+  display: inline-block;
+  background-color: #aeaeae;
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-family: "sd_gothic_m";
+}
+.box-left .talkBox {
+  background-color: #fff;
+}
+.box-right .talkBox {
+  background-color: #fee500;
+}
+
+.mediaBox button {
+  border: none;
+  color: #6078ea;
+  font-family: "sd_gothic_b";
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-size: 1rem;
+}
+.mediaBox button:hover {
+  text-decoration: 1px underline #6078ea;
+}
+.box-right .mediaBox button {
+  background-color: #fee500;
+}
+
+.box-left .mediaBox button {
+  background-color: #ffffff;
 }
 
 .App-logo {
@@ -35,4 +114,159 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Loading Box */
+.loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* background-color: black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fbfbfb;
+  font-family: "sd_gothic_m";
+}
+.box-loading-img {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loadingImg {
+  width: 170px;
+  animation: ani-loading infinite 1s linear;
+}
+.description-loading {
+  font-size: 20px;
+}
+
+@keyframes ani-loading {
+  0% {
+    transform: scale(1, 1);
+  }
+  40% {
+    transform: scale(1, 1);
+  }
+  70% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* Date Box  */
+
+.dateBox {
+  text-align: center;
+  color: #474747;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 15px;
+  font-family: "sd_gothic_l";
+  letter-spacing: 1px;
+}
+
+/* Media Box  */
+
+.talkImg {
+  width: 95%;
+}
+
+.talkVideo {
+  width: 95%;
+}
+
+.mediaContainer {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  background-color: #000000aa;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+}
+.talkImg-horizontal {
+  width: 400px;
+  margin: 5px 0;
+}
+.talkImg-vertical {
+  height: 500px;
+  margin: 5px 0;
+}
+
+.talkVideo {
+  width: 80%;
+}
+
+/* LOGIN */
+.loginContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginContainer form {
+  width: 300px;
+  height: 400px;
+  /* border: 1px solid red; */
+  background-color: #ecb1ce;
+  border-radius: 7px;
+  box-shadow: 1px 1px 3px #444;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 1px solid blue; */
+  width: 100%;
+  height: 60px;
+}
+
+h1,
+h4 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #444444;
+
+  letter-spacing: 1px;
+}
+h1 {
+  font-size: 50px;
+  font-family: "sd_gothic_m";
+}
+h4 {
+  font-family: "sd_gothic_l";
+}
+
+.inputBox input {
+  width: 80%;
+  height: 20px;
+  margin-bottom: 15px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #ca739e;
+  background-color: #ecb1ce;
+  letter-spacing: 2px;
+  font-size: 17px;
+  text-indent: 2px;
+  padding: 2px;
+  color: #444;
+}
+.inputBox input:focus {
+  border-bottom: 2px solid #fbfbfb;
 }
