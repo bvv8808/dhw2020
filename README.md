@@ -26,12 +26,17 @@ user2=0000
 - 하나로 합친 txt파일을 `public/assets/talk`폴더에 옮겨주세요.
 - `/public/assts/talk/[텍스트 파일명].txt`경로를 `/src/routes.main.js`파일의 다음 부분에 넣어주세요.
 
-```javascript
-// line 11
-const talkTextPath = `/public/assts/talk/[텍스트 파일명].txt`;
-```
+  ```javascript
+  // line 11
+  const talkTextPath = `/public/assts/talk/[텍스트 파일명].txt`;
+  ```
 
 > 이로써 백엔드 서버는 세팅이 끝났습니다. `node app`명령으로 서버를 실행해주세요. 아래부터는 본 저장소에서 내려받을 수 있는 프론트 서버 세팅에 대한 내용입니다.
+
+### 라이브러리 다운로드
+
+`npm i`명령을 실행하여 필요한 라이브러리를 내려받아 주세요
+이후 서버를 실행할 때는 `npm start`명령을 실행해주시면 됩니다.
 
 ### 사용자가 로그인 후 이용할 수 있습니다
 
@@ -45,6 +50,8 @@ const talkTextPath = `/public/assts/talk/[텍스트 파일명].txt`;
 ```
 
 ## 유의 사항
+
+- 서버 구동 중 코드를 수정하신다면, 코드 저장 후 페이지를 직접 새로고침 해주세요.
 
 - 백엔드 서버를 먼저 구동시킨 후에 프론트 서버를 구동시켜 주세요.
 
