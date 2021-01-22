@@ -30,10 +30,6 @@ const MediaContainer = () => {
                 return resArr.length;
               })
               .then((dataLength) => {
-                // const mediaContainer = document.querySelector(
-                //   ".mediaContainer"
-                // );
-
                 if (dataLength === 1)
                   mediaContainer.style.justifyContent = "center";
                 else mediaContainer.style.justifyContent = "space-between";
